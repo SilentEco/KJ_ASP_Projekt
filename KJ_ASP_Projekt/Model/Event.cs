@@ -23,7 +23,7 @@ namespace KJ_ASP_Projekt.Model
 
         public User Organizer { get; set; }
 
-        public List<Event> Attendees { get; set; }
+        public List<User> Attendees { get; set; }
 
 
     }
