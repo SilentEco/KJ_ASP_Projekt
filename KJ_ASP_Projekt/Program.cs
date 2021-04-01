@@ -23,6 +23,8 @@ namespace KJ_ASP_Projekt
                // context.Database.EnsureCreated();
                 //context.Seed();
             }
+
+            host.Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

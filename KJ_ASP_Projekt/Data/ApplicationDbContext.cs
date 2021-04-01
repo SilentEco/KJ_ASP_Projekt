@@ -16,7 +16,7 @@ namespace KJ_ASP_Projekt.Data
         {
         }
 
-        DbSet<Event> Events { get; set; }
+        public DbSet<Event> Events { get; set; }
 
 
 
@@ -37,7 +37,7 @@ namespace KJ_ASP_Projekt.Data
             await userManager.CreateAsync(admin1, "Passw0rd!");
             await userManager.CreateAsync(admin2, "Passw0rd!");
 
-
+            
             
 
         }
