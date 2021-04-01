@@ -6,7 +6,7 @@ using System.Text;
 
 namespace KJ_ASP_Projekt.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
