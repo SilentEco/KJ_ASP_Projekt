@@ -22,20 +22,16 @@ namespace KJ_ASP_Projekt.Data
 
         public async Task Seed(UserManager<User> userManager)
         {
-
-            /* Users.AddRange(new List<User>()
-             {
-                 new User(){FirstName = "Kristopher", LastName = "Kram" },
-                 new User(){FirstName = "Jakob", LastName = "Larsson" }
-
-
-             });*/
+            await Database.EnsureDeletedAsync();
+            await Database.EnsureCreatedAsync();
 
             User admin1= new User() { FirstName = "Kristopher", LastName = "Kram" };
-            User admin2 = new User() { FirstName = "Jakob", LastName = "Larsson" };
+            User admin2 = new User() { FirstName = "Jakob", LastName = "Larsson", Email = "test@hotmail.com", EmailConfirmed = true };
 
             await userManager.CreateAsync(admin1, "Passw0rd!");
             await userManager.CreateAsync(admin2, "Passw0rd!");
+
+            await SaveChangesAsync();
 
             
             

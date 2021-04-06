@@ -1,4 +1,6 @@
+using KJ_ASP_Projekt.Model;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -12,16 +14,23 @@ namespace KJ_ASP_Projekt
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var host = CreateHostBuilder(args).Build();
 
             using (var scope = host.Services.CreateScope())
             {
+                
                 var services = scope.ServiceProvider;
                 var context = services.GetRequiredService<Data.ApplicationDbContext>();
-               // context.Database.EnsureCreated();
-                //context.Seed();
+                var userManager = services.GetRequiredService<UserManager<User>>();
+                
+                
+                    await context.Seed(userManager);
+                
+                
+                
+                
             }
 
             host.Run();
