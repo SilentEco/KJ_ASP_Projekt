@@ -9,7 +9,7 @@ namespace KJ_ASP_Projekt.Model
 {
     public class User : IdentityUser
     {
-        public int Id { get; set; }
+        
 
         public string FirstName { get; set; }
 

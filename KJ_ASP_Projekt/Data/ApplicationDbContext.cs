@@ -25,8 +25,8 @@ namespace KJ_ASP_Projekt.Data
             await Database.EnsureDeletedAsync();
             await Database.EnsureCreatedAsync();
 
-            User admin1= new User() { FirstName = "Kristopher", LastName = "Kram" };
-            User admin2 = new User() { FirstName = "Jakob", LastName = "Larsson", Email = "test@hotmail.com", EmailConfirmed = true };
+            User admin1= new User() { FirstName = "Kristopher", LastName = "Kram", Email = "test1@hotmail.com", EmailConfirmed = true, UserName = "admin1" };
+            User admin2 = new User() { FirstName = "Jakob", LastName = "Larsson", Email = "test2@hotmail.com", EmailConfirmed = true, UserName = "admin2" };
 
             await userManager.CreateAsync(admin1, "Passw0rd!");
             await userManager.CreateAsync(admin2, "Passw0rd!");
