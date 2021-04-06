@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using KJ_ASP_Projekt.Data;
 using KJ_ASP_Projekt.Model;
+using Microsoft.AspNetCore.Authorization;
 
 namespace KJ_ASP_Projekt.Pages.Admin
 {
+    [Authorize(Roles ="admin")]
     public class UsersListModel : PageModel
     {
         private readonly KJ_ASP_Projekt.Data.ApplicationDbContext _context;
@@ -29,7 +31,6 @@ namespace KJ_ASP_Projekt.Pages.Admin
 
             Users = await _context.Users.ToListAsync();
 
-            var test = 0;
         }
     }
 }

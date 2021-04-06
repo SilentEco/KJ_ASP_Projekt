@@ -5,6 +5,14 @@
     ViewData["Title"] = "UserList";
 }
 
+@if (User.IsInRole("admin"))
+{
+    <h1>Hello Admin!</h1>
+}
+else 
+{ 
+    <h1>You are not admin</h1>
+};
 <h1>User List</h1>
 
 
