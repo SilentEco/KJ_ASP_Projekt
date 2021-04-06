@@ -6,12 +6,15 @@
 <ul class="navbar-nav">
     @if (SignInManager.IsSignedIn(User))
     {
+        if (User.IsInRole("organizer"))
+        {
         <li class="nav-item btn btn-outline-success ">
             <a class="nav-link text-dark" asp-area="" asp-page="/Events/Create">Create Event</a>
         </li>
         <li class="nav-item btn btn-outline-success">
             <a class="nav-link text-dark" asp-area="" asp-page="/Events/Index">Organize Events</a>
         </li>
+        }
         <li class="nav-item">
             <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name</a>
         </li>
