@@ -15,6 +15,10 @@ namespace KJ_ASP_Projekt.Model
 
         public string LastName { get; set; }
 
+        public bool TestBool { get; set; }
+
+        public string TestString { get; set; }
+
         [InverseProperty("Organizer")]
         public List<Event> HostedEvents { get; set; }
 
