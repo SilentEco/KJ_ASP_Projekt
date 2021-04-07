@@ -5,7 +5,7 @@
     ViewData["Title"] = "UserList";
 }
 
-@inject UserManager<Model.User> UserManager
+
 
 @if (User.IsInRole("admin"))
 {
@@ -16,7 +16,9 @@ else
     <h1>You are not admin</h1>
 };
 <h1>User List</h1>
-
+<input type="checkbox">
+<input type="checkbox" checked>
+<input type="checkbox">
 
 <table class="table">
     <thead>
@@ -62,7 +64,14 @@ else
                     @Html.DisplayFor(modelItem => item.LastName)
                 </td>
                 <td>
-                   
+                    @if (await Model._userManager.IsInRoleAsync(item, "organizer"))
+                    {
+                        <input type="checkbox" checked />
+                    }
+                    else
+                    {
+                        <input type="checkbox" />
+                    }
                 </td>
                 <td>
                     <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |

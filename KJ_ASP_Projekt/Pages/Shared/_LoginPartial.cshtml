@@ -15,6 +15,12 @@
             <a class="nav-link text-dark" asp-area="" asp-page="/Events/Index">Organize Events</a>
         </li>
         }
+        if (User.IsInRole("admin"))
+        {
+        <li class="nav-item btn btn-outline-danger">
+            <a class="nav-link text-dark" asp-area="" asp-page="/Admin/UsersList">Manage Users</a>
+        </li> 
+        }
         <li class="nav-item">
             <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name</a>
         </li>

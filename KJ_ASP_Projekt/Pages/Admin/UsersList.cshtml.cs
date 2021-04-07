@@ -20,7 +20,7 @@ namespace KJ_ASP_Projekt.Pages.Admin
     {
         private readonly KJ_ASP_Projekt.Data.ApplicationDbContext _context;
 
-        private readonly UserManager<User> _userManager;
+        public readonly UserManager<User> _userManager;
 
 
 
