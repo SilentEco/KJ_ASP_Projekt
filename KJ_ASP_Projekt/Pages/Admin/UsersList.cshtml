@@ -5,12 +5,14 @@
     ViewData["Title"] = "UserList";
 }
 
+@inject UserManager<Model.User> UserManager
+
 @if (User.IsInRole("admin"))
 {
     <h1>Hello Admin!</h1>
 }
-else 
-{ 
+else
+{
     <h1>You are not admin</h1>
 };
 <h1>User List</h1>
@@ -35,7 +37,7 @@ else
                 @Html.DisplayNameFor(model => model.Users[0].LastName)
             </th>
             <th>
-                Sätt in IsOrganizer här
+                @Html.DisplayNameFor(model => model.Users[0].IsOrganizer)
             </th>
             <th></th>
         </tr>
@@ -60,7 +62,7 @@ else
                     @Html.DisplayFor(modelItem => item.LastName)
                 </td>
                 <td>
-                    Error
+                   
                 </td>
                 <td>
                     <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |

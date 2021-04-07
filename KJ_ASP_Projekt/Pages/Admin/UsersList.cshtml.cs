@@ -8,6 +8,10 @@ using Microsoft.EntityFrameworkCore;
 using KJ_ASP_Projekt.Data;
 using KJ_ASP_Projekt.Model;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+
 
 namespace KJ_ASP_Projekt.Pages.Admin
 {
@@ -16,9 +20,16 @@ namespace KJ_ASP_Projekt.Pages.Admin
     {
         private readonly KJ_ASP_Projekt.Data.ApplicationDbContext _context;
 
-        public UsersListModel(KJ_ASP_Projekt.Data.ApplicationDbContext context)
+        private readonly UserManager<User> _userManager;
+
+
+
+
+        public UsersListModel(KJ_ASP_Projekt.Data.ApplicationDbContext context,
+                                UserManager<User> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         
@@ -30,6 +41,17 @@ namespace KJ_ASP_Projekt.Pages.Admin
             
 
             Users = await _context.Users.ToListAsync();
+
+            
+             var test = await _userManager.IsInRoleAsync(Users[0], "organizer");
+
+            test = true;
+
+            var test1 = 0;
+
+            await _context.SaveChangesAsync();
+
+            
 
         }
     }
