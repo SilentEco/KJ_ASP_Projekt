@@ -23,7 +23,7 @@ namespace KJ_ASP_Projekt.Pages.PublicEvents
 
         public async Task OnGetAsync()
         {
-            Event = await _context.Events.ToListAsync();
+            Event = await _context.Events.Include(m => m.Organizer).ToListAsync();
         }
     }
 }
