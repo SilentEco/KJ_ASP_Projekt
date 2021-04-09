@@ -55,17 +55,28 @@ namespace KJ_ASP_Projekt.Pages.Admin
 
         }
 
-        public async Task<IActionResult> OnPost(string? id)
+        public async Task<IActionResult> OnPost(string? id )
         {
             if (id == null)
             {
                 return NotFound();
             }
 
+
             
             var userId = await _context.Users.FirstOrDefaultAsync(m => m.Id == id);
 
-            await _userManager.AddToRoleAsync(userId, "organizer");
+            var isOrganizer = await _userManager.IsInRoleAsync(userId, "organizer");
+
+            if(await _userManager.IsInRoleAsync(userId, "organizer"))
+            {
+                await _userManager.RemoveFromRoleAsync(userId, "organizer");
+            }
+            else
+            {
+                await _userManager.AddToRoleAsync(userId, "organizer");
+            }
+            
 
             await _context.SaveChangesAsync();
 
