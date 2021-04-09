@@ -28,8 +28,8 @@ namespace KJ_ASP_Projekt.Data
             await roleManager.CreateAsync(new IdentityRole("admin"));
             await roleManager.CreateAsync(new IdentityRole("organizer"));
 
-            User admin1= new User() { FirstName = "Kristopher", LastName = "Kram", Email = "test1@hotmail.com", EmailConfirmed = true, UserName = "admin1", MiddleName = "Lars Jonas", IsOrganizer = false };
-            User admin2 = new User() { FirstName = "Jakob", LastName = "Larsson", Email = "test2@hotmail.com", EmailConfirmed = true, UserName = "admin2", MiddleName = "Junior", IsOrganizer = true };
+            User admin1= new User() { FirstName = "Kristopher", LastName = "Kram", Email = "test1@hotmail.com", EmailConfirmed = true, UserName = "admin1"  };
+            User admin2 = new User() { FirstName = "Jakob", LastName = "Larsson", Email = "test2@hotmail.com", EmailConfirmed = true, UserName = "admin2" };
 
             await userManager.CreateAsync(admin1, "Passw0rd!");
             await userManager.CreateAsync(admin2, "Passw0rd!");

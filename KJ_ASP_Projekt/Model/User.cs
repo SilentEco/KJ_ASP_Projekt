@@ -14,9 +14,7 @@ namespace KJ_ASP_Projekt.Model
 
         public string LastName { get; set; }
 
-        public bool IsOrganizer { get; set; }
-
-        public string MiddleName { get; set; }
+        public string OrganizerTitle { get; set; }
 
         [InverseProperty("Organizer")]
         public List<Event> HostedEvents { get; set; }
