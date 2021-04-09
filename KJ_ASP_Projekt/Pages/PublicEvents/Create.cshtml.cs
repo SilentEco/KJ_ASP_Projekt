@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using KJ_ASP_Projekt.Data;
 using KJ_ASP_Projekt.Model;
 
-namespace KJ_ASP_Projekt.Pages.Events
+namespace KJ_ASP_Projekt.Pages.PublicEvents
 {
     public class CreateModel : PageModel
     {
@@ -27,8 +27,6 @@ namespace KJ_ASP_Projekt.Pages.Events
         [BindProperty]
         public Event Event { get; set; }
 
-        public User Users { get; set; }
-
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
@@ -36,10 +34,7 @@ namespace KJ_ASP_Projekt.Pages.Events
             {
                 return Page();
             }
-            var user = User.Identity;
 
-            var userModel =  _context.Users.FirstOrDefault(m => m.UserName == user.Name);
-            Event.Organizer = userModel;
             _context.Events.Add(Event);
             await _context.SaveChangesAsync();
 

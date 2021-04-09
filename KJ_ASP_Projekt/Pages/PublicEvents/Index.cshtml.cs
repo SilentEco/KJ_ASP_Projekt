@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using KJ_ASP_Projekt.Data;
 using KJ_ASP_Projekt.Model;
 
-namespace KJ_ASP_Projekt.Pages.Events
+namespace KJ_ASP_Projekt.Pages.PublicEvents
 {
     public class IndexModel : PageModel
     {
@@ -21,17 +21,9 @@ namespace KJ_ASP_Projekt.Pages.Events
 
         public IList<Event> Event { get;set; }
 
-        public List<User> Users { get; set; }
-
         public async Task OnGetAsync()
         {
-            var user = User.Identity;
-
-            var userModel = _context.Users.FirstOrDefault(m => m.UserName == user.Name);
-
-            Event = await _context.Events.Where(m => m.Organizer == userModel).ToListAsync();
-
-           // Users = await _context.Users.ToListAsync();
+            Event = await _context.Events.ToListAsync();
         }
     }
 }

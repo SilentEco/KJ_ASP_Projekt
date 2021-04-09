@@ -66,6 +66,9 @@ namespace KJ_ASP_Projekt.Areas.Identity.Pages.Account
             public string FirstName { get; set; }
             [Display(Name = "Last name")]
             public string LastName { get; set; }
+            [Required]
+            [Display(Name = "User Name")]
+            public string UserName { get; set; }
         }
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -80,7 +83,7 @@ namespace KJ_ASP_Projekt.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = Input.Email, Email = Input.Email, FirstName = Input.FirstName, LastName = Input.LastName };
+                var user = new User { UserName = Input.UserName, Email = Input.Email, FirstName = Input.FirstName, LastName = Input.LastName };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
