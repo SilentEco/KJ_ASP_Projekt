@@ -66,14 +66,17 @@ else
                 <td>
                     @if (await Model._userManager.IsInRoleAsync(item, "organizer"))
                     {
-                        <input type="checkbox" checked />
+                        <input id="@item.Id" type="checkbox" checked />
                     }
                     else
                     {
-                        <input type="checkbox" />
+                        <input id="@item.Id" type="checkbox" />
                     }
                 </td>
                 <td>
+                    <form method="post">
+                        <input asp-route-id="@item.Id" type="submit" value="save" class="btn btn-outline-primary" />
+                    </form>
                     <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
                     <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
                     <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>

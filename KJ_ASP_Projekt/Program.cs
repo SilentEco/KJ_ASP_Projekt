@@ -27,7 +27,7 @@ namespace KJ_ASP_Projekt
                 var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
                 
                 
-                    await context.Seed(userManager, roleManager);
+                    //await context.Seed(userManager, roleManager);
                 
             }
 

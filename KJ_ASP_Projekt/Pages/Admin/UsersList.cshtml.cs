@@ -43,7 +43,7 @@ namespace KJ_ASP_Projekt.Pages.Admin
             Users = await _context.Users.ToListAsync();
 
             
-             var test = await _userManager.IsInRoleAsync(Users[0], "organizer");
+            var test = await _userManager.IsInRoleAsync(Users[0], "organizer");
 
             test = true;
 
@@ -53,6 +53,24 @@ namespace KJ_ASP_Projekt.Pages.Admin
 
             
 
+        }
+
+        public async Task<IActionResult> OnPost(string? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            
+            var userId = await _context.Users.FirstOrDefaultAsync(m => m.Id == id);
+
+            await _userManager.AddToRoleAsync(userId, "organizer");
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToPage("/Index");
+            // return RedirectToPage("/JoinedEvents");
         }
     }
 }
