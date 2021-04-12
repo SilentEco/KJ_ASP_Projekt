@@ -5,6 +5,8 @@
     ViewData["ActivePage"] = ManageNavPages.Index;
 }
 
+
+
 <h4>@ViewData["Title"]</h4>
 <partial name="_StatusMessage" model="Model.StatusMessage" />
 <div class="row">
@@ -19,6 +21,10 @@
             {
             <div class="form-group">
                 <label asp-for="Input.OrganizerTitle"></label>
+                @if (Model.Input.OrganizerTitle == null)
+                {
+                    <p style="color:red">REQUIRED</p>
+                }
                 <input asp-for="Input.OrganizerTitle" class="form-control" />
             </div>
             }

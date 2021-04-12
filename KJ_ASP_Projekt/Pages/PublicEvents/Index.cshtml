@@ -49,7 +49,7 @@
                 @Html.DisplayFor(modelItem => item.SpotsAvailable)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Organizer.UserName)
+                @Html.DisplayFor(modelItem => item.Organizer.OrganizerTitle)
             </td>
             <td>
                 <a asp-page="./Details" class="btn btn-outline-primary" asp-route-id="@item.Id">Join</a> 

@@ -21,6 +21,14 @@ namespace KJ_ASP_Projekt.Pages.Events
 
         public IActionResult OnGet()
         {
+            var user = User.Identity;
+
+            var userModel = _context.Users.FirstOrDefault(m => m.UserName == user.Name);
+
+            if (userModel.OrganizerTitle == null)
+            {
+                return RedirectToPage("/Account/Manage/Index", new { area = "Identity" });
+            }
             return Page();
         }
 
