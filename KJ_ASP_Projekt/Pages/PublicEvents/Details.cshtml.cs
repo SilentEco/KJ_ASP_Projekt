@@ -21,9 +21,12 @@ namespace KJ_ASP_Projekt.Pages.PublicEvents
 
         public Event Event { get; set; }
         public bool SuccessfullyJoined { get; set; }
+        public bool Joined { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
+
+            Joined = AlreadyJoined(id);
             SuccessfullyJoined = false;
             if (id == null)
             {
@@ -51,5 +54,19 @@ namespace KJ_ASP_Projekt.Pages.PublicEvents
             await _context.SaveChangesAsync();
             return Page();
         }
+
+        public bool AlreadyJoined(int? id)
+        {
+            Event = _context.Events.FirstOrDefault(m => m.Id == id);
+            var user = User.Identity;
+
+            var userModel = _context.Users.Include(j => j.JoinedEvents).FirstOrDefault(m => m.UserName == user.Name);
+            if (userModel.JoinedEvents.Contains(Event))
+            {
+                return true;
+            }
+            else return false;
+        }
     }
+   
 }
