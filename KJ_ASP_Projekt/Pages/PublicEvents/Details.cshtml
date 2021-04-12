@@ -50,6 +50,14 @@
     </dl>
 </div>
 <div>
-    <form method="post"><button type="submit">Join</button></form>
+    @if (Model.SuccessfullyJoined == false)
+    {
+        <form method="post"><button type="submit">Join</button></form>
+    }
+    else
+    {
+        <h1>Succesfully joined!</h1>
+        <a asp-page="/PersonalEventList/PersonalList">View your events</a>
+    }
     <a asp-page="./Index">Back to List</a>
 </div>

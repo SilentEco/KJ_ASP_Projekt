@@ -8,18 +8,20 @@ using Microsoft.EntityFrameworkCore;
 using KJ_ASP_Projekt.Data;
 using KJ_ASP_Projekt.Model;
 
-namespace KJ_ASP_Projekt.Pages.Events
+namespace KJ_ASP_Projekt.Pages.PersonalEventList
 {
-    public class IndexModel : PageModel
+    public class PersonalListModel : PageModel
     {
         private readonly KJ_ASP_Projekt.Data.ApplicationDbContext _context;
 
-        public IndexModel(KJ_ASP_Projekt.Data.ApplicationDbContext context)
+        public PersonalListModel(KJ_ASP_Projekt.Data.ApplicationDbContext context)
         {
             _context = context;
         }
 
         public IList<Event> Event { get;set; }
+
+        public List<Event> JoinedEvents { get; set; }
 
         public async Task OnGetAsync()
         {
@@ -27,9 +29,17 @@ namespace KJ_ASP_Projekt.Pages.Events
 
             var userModel = _context.Users.FirstOrDefault(m => m.UserName == user.Name);
 
-            Event = await _context.Events.Where(m => m.Organizer == userModel).ToListAsync();
+            Event = await _context.Events.Include(a => a.Attendees).ToListAsync();
 
-           // Users = await _context.Users.ToListAsync();
+            JoinedEvents = new List<Event>();
+
+            foreach (var item in Event)
+            {
+                if (item.Attendees.Contains(userModel))
+                {
+                    JoinedEvents.Add(item);
+                }
+            }
         }
     }
 }
