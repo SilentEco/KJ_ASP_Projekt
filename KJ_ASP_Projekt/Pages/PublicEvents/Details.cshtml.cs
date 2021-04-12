@@ -43,12 +43,18 @@ namespace KJ_ASP_Projekt.Pages.PublicEvents
         }
         public async Task<IActionResult> OnPostAsync(int? id)
         {
-            SuccessfullyJoined = true;
-            Event = await _context.Events.FirstOrDefaultAsync(m => m.Id == id);
-            
             var user = User.Identity;
 
             var userModel = _context.Users.Include(j => j.JoinedEvents).FirstOrDefault(m => m.UserName == user.Name);
+
+            if (userModel == null)
+            {
+                return RedirectToPage("/Account/Login", new { area = "Identity" });
+            }
+            SuccessfullyJoined = true;
+            Event = await _context.Events.FirstOrDefaultAsync(m => m.Id == id);
+            
+
 
             userModel.JoinedEvents.Add(Event);
             await _context.SaveChangesAsync();
@@ -58,9 +64,13 @@ namespace KJ_ASP_Projekt.Pages.PublicEvents
         public bool AlreadyJoined(int? id)
         {
             Event = _context.Events.FirstOrDefault(m => m.Id == id);
+            
             var user = User.Identity;
-
             var userModel = _context.Users.Include(j => j.JoinedEvents).FirstOrDefault(m => m.UserName == user.Name);
+            if (userModel == null)
+            {
+                return false;
+            }
             if (userModel.JoinedEvents.Contains(Event))
             {
                 return true;
