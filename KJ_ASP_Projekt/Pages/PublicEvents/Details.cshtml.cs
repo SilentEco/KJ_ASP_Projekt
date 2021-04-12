@@ -36,5 +36,18 @@ namespace KJ_ASP_Projekt.Pages.PublicEvents
             }
             return Page();
         }
+        public async Task<IActionResult> OnPostAsync(int? id)
+        {
+            Event = await _context.Events.FirstOrDefaultAsync(m => m.Id == id);
+            
+            var user = User.Identity;
+
+            var userModel = _context.Users.Include(j => j.JoinedEvents).FirstOrDefault(m => m.UserName == user.Name);
+
+            userModel.JoinedEvents.Add(Event);
+            await _context.SaveChangesAsync();
+
+            return Page();
+        }
     }
 }
