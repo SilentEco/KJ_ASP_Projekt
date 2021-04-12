@@ -44,14 +44,13 @@ namespace KJ_ASP_Projekt.Areas.Identity.Pages.Account.Manage
         {
             var userName = await _userManager.GetUserNameAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
-            //Försök att lägga till organizerTitle HÄR 
 
             Username = userName;
 
             Input = new InputModel
             {
                 PhoneNumber = phoneNumber,
-                //ORGANIZER TITLE på något sätt här. 
+                OrganizerTitle = user.OrganizerTitle
 
             };
         }
@@ -92,6 +91,10 @@ namespace KJ_ASP_Projekt.Areas.Identity.Pages.Account.Manage
                     return RedirectToPage();
                 }
             }
+
+            user.OrganizerTitle = Input.OrganizerTitle;
+            await _userManager.UpdateAsync(user);
+
 
             await _signInManager.RefreshSignInAsync(user);
             StatusMessage = "Your profile has been updated";

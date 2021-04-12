@@ -17,7 +17,7 @@ namespace KJ_ASP_Projekt.Model
 
         public string Adress { get; set; }
 
-        public string Date { get; set; }
+        public DateTime Date { get; set; }
 
         public int SpotsAvailable { get; set; }
 

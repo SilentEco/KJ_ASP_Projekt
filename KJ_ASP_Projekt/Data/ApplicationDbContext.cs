@@ -23,7 +23,8 @@ namespace KJ_ASP_Projekt.Data
         public async Task Seed(UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
         {
             //await Database.EnsureDeletedAsync();
-            await Database.EnsureCreatedAsync();
+            //await Database.EnsureCreatedAsync();
+            await Database.MigrateAsync();
 
             await roleManager.CreateAsync(new IdentityRole("admin"));
             await roleManager.CreateAsync(new IdentityRole("organizer"));
