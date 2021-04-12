@@ -80,8 +80,7 @@ namespace KJ_ASP_Projekt.Pages.Admin
 
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("/Index");
-            // return RedirectToPage("/JoinedEvents");
+            return RedirectToPage(this);
         }
     }
 }
