@@ -1,5 +1,8 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+@inject SignInManager<Model.User> SignInManager
+@inject UserManager<Model.User> UserManager
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -24,9 +27,15 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/PublicEvents/Index">Events</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/PersonalEventList/PersonalList">Joined Events</a>
-                        </li>
+                        @if (User.IsInRole("admin") || User.IsInRole("organizer"))
+                        {
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/PersonalEventList/PersonalList">Joined Events</a>
+                            </li>
+                        }
 
                     </ul>
                     <partial name="_LoginPartial" />
