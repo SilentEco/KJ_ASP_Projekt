@@ -27,7 +27,7 @@ namespace KJ_ASP_Projekt
                 var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
 
                 try { await context.Seed(userManager, roleManager); }
-                catch(Exception e) { }
+                catch(Exception e) { Console.WriteLine("Error from Seed:" + e ); }
                 
             }
 

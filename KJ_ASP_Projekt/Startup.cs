@@ -37,8 +37,16 @@ namespace KJ_ASP_Projekt
             services.AddDefaultIdentity<User>(/*options => options.SignIn.RequireConfirmedAccount = true*/)
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("RequireOrganizerRole", b => b.RequireRole("organizer"));
+                options.AddPolicy("RequireAdminRole", b => b.RequireRole("admin"));
+            });
 
-            services.AddRazorPages();
+            services.AddRazorPages(o => 
+            {
+                o.Conventions.AuthorizeFolder("/Events", "RequireOrganizerRole");
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

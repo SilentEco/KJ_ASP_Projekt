@@ -43,11 +43,7 @@ namespace KJ_ASP_Projekt.Pages.Admin
             Users = await _context.Users.ToListAsync();
 
             
-            var test = await _userManager.IsInRoleAsync(Users[0], "organizer");
-
-            test = true;
-
-            var test1 = 0;
+           
 
             await _context.SaveChangesAsync();
 
@@ -55,7 +51,7 @@ namespace KJ_ASP_Projekt.Pages.Admin
 
         }
 
-        public async Task<IActionResult> OnPost(string? id )
+        public async Task<IActionResult> OnPost(string id )
         {
             if (id == null)
             {

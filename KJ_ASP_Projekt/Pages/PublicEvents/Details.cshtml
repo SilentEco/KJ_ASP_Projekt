@@ -54,7 +54,7 @@
 </div>
 @if (User.IsInRole("admin") || (User.IsInRole("organizer")))
 {
-<h1>You cannot join events as an organizer or administrator.</h1>
+<h3>You cannot join events as an organizer or administrator.</h3>
 <h5>Please create/login as a regular user.</h5>
 }
 else
@@ -62,17 +62,20 @@ else
 <div>
     @if (Model.SuccessfullyJoined == false && Model.Joined == false)
     {
-        <form method="post"><button type="submit">Join</button></form>
+        <form style="display:inline" method="post"><button  class="btn btn-primary" type="submit">Join</button></form>
+        <a style="display:inline" class="btn btn-secondary" asp-page="./Index">Back to List</a>
     }
     else if (Model.SuccessfullyJoined == false && Model.Joined == true)
     {
-        <h1><strong>Joined!</strong></h1>
-        <a asp-page="/PersonalEventList/PersonalList">View your events</a>
+        <h2><strong>Joined!</strong></h2>
+        <a class="btn btn-primary" asp-page="/PersonalEventList/PersonalList">View your events</a>
+        <a class="btn btn-secondary" asp-page="./Index">Back to List</a>
     }
     else
     {
         <h1>Succesfully joined this event.</h1>
-        <a asp-page="/PersonalEventList/PersonalList">View your events</a>
+        <a class="btn btn-primary" asp-page="/PersonalEventList/PersonalList">View your events</a>
+        <a class="btn btn-secondary" asp-page="./Index">Back to List</a>
     }
-    <a asp-page="./Index">Back to List</a>
+
 </div>}
