@@ -47,7 +47,7 @@
                 @Html.DisplayFor(modelItem => item.Adress)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Date)
+                @item.Date.ToString("dddd, dd MMMM yyyy")
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.SpotsAvailable)
