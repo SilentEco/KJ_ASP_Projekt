@@ -62,7 +62,7 @@ namespace KJ_ASP_Projekt.Pages.Admin
             
             var userId = await _context.Users.FirstOrDefaultAsync(m => m.Id == id);
 
-            var isOrganizer = await _userManager.IsInRoleAsync(userId, "organizer");
+            //var isOrganizer = await _userManager.IsInRoleAsync(userId, "organizer");
 
             if(await _userManager.IsInRoleAsync(userId, "organizer"))
             {

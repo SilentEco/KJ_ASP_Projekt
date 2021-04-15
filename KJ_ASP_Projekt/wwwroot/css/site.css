@@ -7,6 +7,10 @@ a.navbar-brand {
   word-break: break-all;
 }
 
+.navbar {
+    background-color: #00bcd4 !important;
+}
+
 /* Provide sufficient contrast against white background */
 a {
     color: #0366d6;
@@ -36,10 +40,10 @@ html {
 }
 
 .border-top {
-  border-top: 1px solid #e5e5e5;
+  border-top: 1px solid #e5e5e5 !important;
 }
 .border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #000000 !important;
 }
 
 .box-shadow {
@@ -63,12 +67,23 @@ body {
     margin-bottom: 60px;
 }
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+    background-color: #00bcd4;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
 }
-.container{
-    background-color:purple;
+.container-main {
+    background-color: #00aac1;
+}
+
+#main-container {
+    height: 85vh;
+    -webkit-box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 11px 10px 0px 5px rgba(0,0,0,0);
+    box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 11px 10px 0px 5px rgba(0,0,0,0);
+}
+
+body {
+    background-color: #00bcd4;
 }
