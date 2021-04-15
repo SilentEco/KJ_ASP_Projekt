@@ -8,62 +8,64 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1 class="text-center">Details</h1>
 
 <div>
-    <h4>Event</h4>
+    <h4 class="text-center">Event</h4>
     <hr />
     <dl class="row">
-        <dt class="col-sm-2">
+        <dt class="col-sm-6 text-right">
             @Html.DisplayNameFor(model => model.Event.Title)
         </dt>
-        <dd class="col-sm-10">
+        <dd class="col-sm-6 text-left">
             @Html.DisplayFor(model => model.Event.Title)
         </dd>
-        <dt class="col-sm-2">
+        <dt class="col-sm-6 text-right">
             @Html.DisplayNameFor(model => model.Event.Description)
         </dt>
-        <dd class="col-sm-10">
+        <dd class="col-sm-6">
             @Html.DisplayFor(model => model.Event.Description)
         </dd>
-        <dt class="col-sm-2">
+        <dt class="col-sm-6 text-right">
             @Html.DisplayNameFor(model => model.Event.Place)
         </dt>
-        <dd class="col-sm-10">
+        <dd class="col-sm-6">
             @Html.DisplayFor(model => model.Event.Place)
         </dd>
-        <dt class="col-sm-2">
+        <dt class="col-sm-6 text-right">
             @Html.DisplayNameFor(model => model.Event.Adress)
         </dt>
-        <dd class="col-sm-10">
+        <dd class="col-sm-6">
             @Html.DisplayFor(model => model.Event.Adress)
         </dd>
-        <dt class="col-sm-2">
+        <dt class="col-sm-6 text-right">
             @Html.DisplayNameFor(model => model.Event.Date)
         </dt>
-        <dd class="col-sm-10">
+        <dd class="col-sm-6">
             @Html.DisplayFor(model => model.Event.Date)
         </dd>
-        <dt class="col-sm-2">
+        <dt class="col-sm-6 text-right">
             @Html.DisplayNameFor(model => model.Event.SpotsAvailable)
         </dt>
-        <dd class="col-sm-10">
+        <dd class="col-sm-6">
             @Html.DisplayFor(model => model.Event.SpotsAvailable)
         </dd>
     </dl>
 </div>
 @if (User.IsInRole("admin") || (User.IsInRole("organizer")))
 {
-<h3>You cannot join events as an organizer or administrator.</h3>
-<h5>Please create/login as a regular user.</h5>
+<h3 class="text-center">You cannot join events as an organizer or administrator.</h3>
+<h5 class="text-center">Please create/login as a regular user.</h5>
 }
 else
 {
-<div>
+<div class="d-flex justify-content-center text-center row">
     @if (Model.SuccessfullyJoined == false && Model.Joined == false)
     {
-        <form style="display:inline" method="post"><button  class="btn btn-primary" type="submit">Join</button></form>
-        <a style="display:inline" class="btn btn-secondary" asp-page="./Index">Back to List</a>
+        <form   class="d-flex align-self-center " method="post" >
+            <button  class="btn btn-primary" type="submit">Join</button>
+        </form>
+        <a  class="btn btn-secondary" asp-page="./Index">Back to List</a>
     }
     else if (Model.SuccessfullyJoined == false && Model.Joined == true)
     {
