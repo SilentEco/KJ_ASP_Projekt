@@ -15,22 +15,22 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Users[0].UserName)
+                Username
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Users[0].PhoneNumber)
+                Phonenumber
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Users[0].Email)
+                Email
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Users[0].FirstName)
+                First Name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Users[0].LastName)
+                Last Name
             </th>
             <th>
-                IsOrganizer
+                Toggle Organizer
             </th>
             <th></th>
         </tr>
@@ -55,24 +55,14 @@
                     @Html.DisplayFor(modelItem => item.LastName)
                 </td>
                 <td>
-                    @if (await Model._userManager.IsInRoleAsync(item, "organizer"))
-                    {
-                        <input id="@item.Id" type="checkbox" checked />
-                    }
-                    else
-                    {
-                        <input id="@item.Id" type="checkbox" />
-                    }
-                </td>
-                <td>
                     <form method="post">
                         @if (await Model._userManager.IsInRoleAsync(item, "organizer"))
                         {
-                        <input asp-route-id="@item.Id " type="submit" value="Unassign" class="btn btn-outline-danger" />
+                        <input asp-route-id="@item.Id " type="submit" value="Organizer" title="Assign to User" class="btn btn-success" />
                         }
                         else
                         {
-                         <input asp-route-id="@item.Id " type="submit" value="Assign" class="btn btn-outline-primary" />
+                         <input asp-route-id="@item.Id " type="submit" value="User" title="Assign to Organizer" class="btn btn-primary" />
                         }
 
                         

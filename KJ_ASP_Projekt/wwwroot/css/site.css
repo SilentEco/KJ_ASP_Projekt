@@ -16,11 +16,16 @@ a {
     color: #0366d6;
 }
 
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+.btn {
+    border: 1px solid #000000
 }
+/*
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border: 1px solid;
+    border-color: #1861ac;
+}*/
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
   color: #fff;
@@ -79,11 +84,15 @@ body {
 }
 
 #main-container {
-    height: 85vh;
+    min-height  : 85vh;
     -webkit-box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 11px 10px 0px 5px rgba(0,0,0,0);
     box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 11px 10px 0px 5px rgba(0,0,0,0);
 }
 
 body {
     background-color: #00bcd4;
+}
+
+.remove-border {
+    border: none !important
 }

@@ -10,16 +10,16 @@
     {
         if (User.IsInRole("organizer"))
         {
-            <li class="nav-item btn btn-outline-success ">
+            <li class="nav-item btn btn-success blk-border">
                 <a class="nav-link text-dark" asp-area="" asp-page="/Events/Create">Create Event</a>
             </li>
-            <li class="nav-item btn btn-outline-success">
+            <li class="nav-item btn btn-success blk-border">
                 <a class="nav-link text-dark" asp-area="" asp-page="/Events/Index">Organize Events</a>
             </li>
         }
         if (User.IsInRole("admin"))
         {
-            <li class="nav-item btn btn-outline-danger">
+            <li class="nav-item btn btn-danger blk-border">
                 <a class="nav-link text-dark" asp-area="" asp-page="/Admin/UsersList">Manage Users</a>
             </li>
 
@@ -29,7 +29,7 @@
         </li>
         <li class="nav-item">
             <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
-                <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                <button type="submit" class="nav-link btn btn-link text-dark remove-border">Logout</button>
             </form>
         </li>
     }

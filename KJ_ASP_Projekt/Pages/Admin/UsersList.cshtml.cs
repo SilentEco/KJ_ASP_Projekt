@@ -22,9 +22,6 @@ namespace KJ_ASP_Projekt.Pages.Admin
 
         public readonly UserManager<User> _userManager;
 
-
-
-
         public UsersListModel(KJ_ASP_Projekt.Data.ApplicationDbContext context,
                                 UserManager<User> userManager)
         {
@@ -32,23 +29,12 @@ namespace KJ_ASP_Projekt.Pages.Admin
             _userManager = userManager;
         }
 
-        
-
         public List<User> Users { get; set; }
 
         public async Task OnGetAsync()
         {
-            
-
             Users = await _context.Users.ToListAsync();
-
-            
-           
-
             await _context.SaveChangesAsync();
-
-            
-
         }
 
         public async Task<IActionResult> OnPost(string id )
@@ -57,13 +43,7 @@ namespace KJ_ASP_Projekt.Pages.Admin
             {
                 return NotFound();
             }
-
-
-            
             var userId = await _context.Users.FirstOrDefaultAsync(m => m.Id == id);
-
-            //var isOrganizer = await _userManager.IsInRoleAsync(userId, "organizer");
-
             if(await _userManager.IsInRoleAsync(userId, "organizer"))
             {
                 await _userManager.RemoveFromRoleAsync(userId, "organizer");
@@ -72,10 +52,7 @@ namespace KJ_ASP_Projekt.Pages.Admin
             {
                 await _userManager.AddToRoleAsync(userId, "organizer");
             }
-            
-
             await _context.SaveChangesAsync();
-
             return RedirectToPage(this);
         }
     }
