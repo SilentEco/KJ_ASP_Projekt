@@ -96,9 +96,3 @@ body {
 .remove-border {
     border: none !important
 }
-
-.transparent {
-    zoom: 1;
-    filter: alpha(opacity=50);
-    opacity: 0.5;
-}
