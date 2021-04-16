@@ -102,3 +102,6 @@ body {
     filter: alpha(opacity=50);
     opacity: 0.5;
 }
+img {
+    margin-top: 390px !important;
+}
